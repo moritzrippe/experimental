@@ -26,7 +26,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }                   
+    }
 
     html {
       background-color: #194026;
@@ -62,8 +62,15 @@
       margin: 0 auto;
       padding: 0 32px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .logo img {
@@ -74,6 +81,8 @@
     .nav-right {
       display: flex;
       align-items: center;
+      position: absolute;
+      right: 32px;
     }
 
     nav a {
@@ -83,13 +92,8 @@
       color: var(--accent);
     }
 
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    nav a.active {
-      color: #ffffff;
-    }
+    nav a:hover { color: #ffffff; }
+    nav a.active { color: #ffffff; }
 
     .social-icon img {
       width: 17px;
@@ -97,8 +101,91 @@
       display: block;
     }
 
+    /* ================= BURGER ================= */
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      position: absolute;
+      right: 32px;
+    }
+
+    .burger span {
+      width: 26px;
+      height: 2px;
+      background: #ffffff;
+      display: block;
+    }
+
+    /* ================= SIDE MENU ================= */
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 260px;
+      height: 100vh;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      padding: 120px 40px;
+      transition: right 0.4s ease;
+      z-index: 999;
+    }
+
+    .side-menu a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .side-menu.active { right: 0; }
+
+    /* ================= CAROUSEL ================= */
+
+.carousel {
+  margin-top: 0px;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background: #f1f1d7;
+}
+
+.carousel-track {
+  display: flex;
+  width: 400%; /* Bleibt bei 400% für 4 Bilder */
+  animation: slide 12s infinite;
+}
+
+.carousel-track img {
+  width: 25%; /* WICHTIG: 1/4 der Track-Breite (400% / 4 = 100% Sichtfeld) */
+  height: auto; 
+  display: block;
+  /* 'object-fit: contain' zeigt das ganze Bild, 'cover' würde zoomen. */
+  object-fit: contain; 
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0); }       /* Bild 1 */
+  20%  { transform: translateX(0); }
+
+  25%  { transform: translateX(-25%); }    /* Bild 2 */
+  45%  { transform: translateX(-25%); }
+
+  50%  { transform: translateX(-50%); }    /* Bild 3 */
+  70%  { transform: translateX(-50%); }
+
+  75%  { transform: translateX(-75%); }    /* Bild 4 */
+  95%  { transform: translateX(-75%); }
+
+  100% { transform: translateX(0); }       /* Zurück zu Bild 1 */
+}
+
     main {
-      padding: 140px 32px 64px 32px;
+      padding: 80px 32px 64px 32px;
     }
 
     /* ================= GRID ================= */
@@ -111,33 +198,21 @@
       gap: 40px;
     }
 
-    /* Mobile */
     @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+      .grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
-      .logo img {
-        height: 14px;
-      } 
-
-      nav a {
-        margin-left: 17px;
-        font-size: 15px;
-      }
+      .nav-right { display: none; }
+      .burger { display: flex; }
+      .logo img { height: 14px; }
+      nav a { margin-left: 17px; font-size: 15px; }
+      .carousel { height: 45vh; }
     }
 
     @media (max-width: 335px) {
-      .logo img {
-        height: 12px;
-      } 
-
-      nav a {
-        margin-left: 10px;
-        font-size: 15px;
-      }
+      .logo img { height: 12px; }
+      nav a { margin-left: 10px; font-size: 15px; }
     }
 
     /* ================= PRODUKTKARTE ================= */
@@ -150,9 +225,7 @@
       transition: transform 0.2s ease;
     }
 
-    .product-card:hover {
-      transform: translateY(-2px);
-    }
+    .product-card:hover { transform: translateY(-2px); }
 
     .product-card img {
       width: 100%;
@@ -177,14 +250,18 @@
       color: var(--green);
       border-top: none;
     }
+
   </style>
 </head>
+
+<body>
 
 <header>
   <nav>
     <div class="logo">
       <img src="logo.png" alt="Logo" draggable="false">
     </div>
+
     <div class="nav-right">
       <a href="index.html" class="active">Kollektion</a>
       <a href="galerie.html">Galerie</a>
@@ -192,8 +269,28 @@
         <img src="social.png" alt="Instagram" draggable="false">
       </a>
     </div>
+
+    <div class="burger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+    </div>
   </nav>
-</header> 
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <a href="index.html">Kollektion</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="https://www.instagram.com/thomaundco/" target="_blank">Instagram</a>
+</div>
+
+<section class="carousel">
+  <div class="carousel-track">
+    <img src="images/k1.jpg" draggable="false">
+    <img src="images/k2.jpg" draggable="false">
+    <img src="images/k3.jpg" draggable="false">
+    <img src="images/k4.jpg" draggable="false">
+  </div>
+</section>
 
 <main>
   <section class="grid">
@@ -254,5 +351,12 @@
 <footer>
   Copyright © 2026 Mouleina. Alle Rechte vorbehalten.
 </footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("active");
+  }
+</script>
+
 </body>
 </html>
