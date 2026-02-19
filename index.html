@@ -10,20 +10,18 @@
 
   <style>
     @font-face {
-      font-family: 'PPPangaia';
-      src: url('../fonts/PPPangaia-Medium.otf') format('opentype');
+      font-family: 'head';
+      src: url('../fonts/head.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
 
-    /* Farben */
     :root {
       --green: #194026;
       --accent: #f1f1d7;
       --white: #ffffff;
     }
 
-    /* Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -35,13 +33,12 @@
     }
 
     body {
-      font-family: 'PPPangaia', serif;
+      font-family: 'head', serif;
       background-color: #ffffff;
       color: var(--green);
       min-height: 100vh;
     }
 
-    /* Bilder gegen Drag & Select schützen */
     img {
       -webkit-user-drag: none;
       -webkit-user-select: none;
@@ -69,10 +66,9 @@
       align-items: center;
     }
 
-    .logo {
-      font-size: 20px;
-      letter-spacing: 0px;
-      color: var(--accent);
+    .logo img {
+      height: 15px;
+      display: block;
     }
 
     .nav-right {
@@ -95,7 +91,6 @@
       color: #ffffff;
     }
 
-    /* Instagram Icon */
     .social-icon img {
       width: 17px;
       height: auto;
@@ -124,8 +119,8 @@
     }
 
     @media (max-width: 900px) {
-      .logo {
-        font-size: 17px;
+      .logo img {
+        height: 14px;
       } 
 
       nav a {
@@ -135,8 +130,8 @@
     }
 
     @media (max-width: 335px) {
-      .logo {
-        font-size: 16px;
+      .logo img {
+        height: 12px;
       } 
 
       nav a {
@@ -187,7 +182,9 @@
 
 <header>
   <nav>
-    <div class="logo">Thoma & Co.</div>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" draggable="false">
+    </div>
     <div class="nav-right">
       <a href="index.html" class="active">Kollektion</a>
       <a href="galerie.html">Galerie</a>
