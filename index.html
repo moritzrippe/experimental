@@ -78,7 +78,7 @@
       display: block;
     }
 
-        .nav-right {
+    .nav-right {
       display: flex;
       align-items: center;
       position: absolute;
@@ -98,48 +98,121 @@
       display: block;
     }
 
+    /* ================= BURGER ================= */
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      position: absolute;
+      right: 32px;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    /* ================= SIDE MENU ================= */
+
+    .side-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--green);
+      z-index: 1050;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .side-menu.open {
+      display: flex;
+    }
+
+    .side-menu a {
+      text-decoration: none;
+      font-size: 17px;
+      color: var(--accent);
+      font-family: 'head', serif;
+    }
+
+    .side-menu a:hover {
+      opacity: 0.7;
+    }
+
+    .side-menu-close {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      position: fixed;
+      top: 2.5px;
+      right: 32px;
+      z-index: 1060;
+      background: none;
+      border: none;
+      padding: 0;
+      height: 35px;
+    }
+
+    .side-menu-close span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
     /* ================= CAROUSEL ================= */
 
-.carousel {
-  margin-top: 0px;
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-  background: #f1f1d7;
-}
+    .carousel {
+      margin: 0;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+      background: #f1f1d7;
+    }
 
-.carousel-track {
-  display: flex;
-  width: 400%; /* Bleibt bei 400% für 4 Bilder */
-  animation: slide 12s infinite;
-}
+    .carousel-track {
+      display: flex;
+      width: 400%;
+      animation: slide 12s infinite;
+    }
 
-.carousel-track img {
-  width: 25%; /* WICHTIG: 1/4 der Track-Breite (400% / 4 = 100% Sichtfeld) */
-  height: auto; 
-  display: block;
-  /* 'object-fit: contain' zeigt das ganze Bild, 'cover' würde zoomen. */
-  object-fit: contain; 
-}
+    .carousel-track img {
+      width: 25%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
 
-@keyframes slide {
-  0%   { transform: translateX(0); }       /* Bild 1 */
-  20%  { transform: translateX(0); }
-
-  25%  { transform: translateX(-25%); }    /* Bild 2 */
-  45%  { transform: translateX(-25%); }
-
-  50%  { transform: translateX(-50%); }    /* Bild 3 */
-  70%  { transform: translateX(-50%); }
-
-  75%  { transform: translateX(-75%); }    /* Bild 4 */
-  95%  { transform: translateX(-75%); }
-
-  100% { transform: translateX(0); }       /* Zurück zu Bild 1 */
-}
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      20%  { transform: translateX(0); }
+      25%  { transform: translateX(-25%); }
+      45%  { transform: translateX(-25%); }
+      50%  { transform: translateX(-50%); }
+      70%  { transform: translateX(-50%); }
+      75%  { transform: translateX(-75%); }
+      95%  { transform: translateX(-75%); }
+      100% { transform: translateX(0); }
+    }
 
     main {
-      padding: 80px 32px 64px 32px;
+      padding: 40px 32px 64px 32px;
     }
 
     /* ================= GRID ================= */
@@ -152,8 +225,17 @@
       gap: 40px;
     }
 
+    @media (max-width: 335px) {
+      .logo img { height: 12px; }
+      nav a { margin-left: 10px; font-size: 15px; }
+      .carousel { height: auto;}
+      body {padding-top: 40px;}
+    }
+
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
+      .carousel { height: auto;}
+      body {padding-top: 40px;}
     }
 
     @media (max-width: 900px) {
@@ -161,12 +243,8 @@
       .burger { display: flex; }
       .logo img { height: 14px; }
       nav a { margin-left: 17px; font-size: 15px; }
-      .carousel { height: 45vh; }
-    }
-
-    @media (max-width: 335px) {
-      .logo img { height: 12px; }
-      nav a { margin-left: 10px; font-size: 15px; }
+      .carousel { height: auto;}
+      body {padding-top: 40px;}
     }
 
     /* ================= PRODUKTKARTE ================= */
@@ -194,8 +272,6 @@
       font-size: 15px;
     }
 
-    /* ================= FOOTER ================= */
-
     footer {
       margin-top: 120px;
       padding: 80px 24px;
@@ -215,8 +291,31 @@
     <div class="logo">
       <img src="logo.png" alt="Logo" draggable="false">
     </div>
+
+    <div class="nav-right">
+      <a href="index.html" class="active">Kollektion</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="https://www.instagram.com/thomaundco/" target="_blank" class="social-icon">
+        <img src="social.png" alt="Instagram" draggable="false">
+      </a>
+    </div>
+
+    <button class="burger" id="burgerBtn" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 </header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="side-menu-close" id="menuClose" aria-label="Menü schließen">
+    <span></span>
+    <span></span>
+  </button>
+  <a href="index.html">Kollektion</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="https://www.instagram.com/thomaundco/" target="_blank">Instagram</a>
+</div>
 
 <section class="carousel">
   <div class="carousel-track">
@@ -286,6 +385,20 @@
 <footer>
   Copyright © 2026 Mouleina. Alle Rechte vorbehalten.
 </footer>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const menuClose = document.getElementById('menuClose');
+  const sideMenu = document.getElementById('sideMenu');
+
+  burgerBtn.addEventListener('click', function () {
+    sideMenu.classList.add('open');
+  });
+
+  menuClose.addEventListener('click', function () {
+    sideMenu.classList.remove('open');
+  });
+</script>
 
 </body>
 </html>
