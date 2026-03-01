@@ -191,6 +191,7 @@
       display: flex;
       gap: 60px;
       align-items: flex-start;
+      
     }
 
     .product-image {
@@ -232,21 +233,45 @@
       opacity: 0.8;
     }
 
+    .back-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--green);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
     /* ================= RESPONSIVE ================= */
 
     @media (max-width: 335px) {
       .logo img { height: 12px; }
       nav a { margin-left: 10px; font-size: 15px; }
+       main {
+      padding-top: 40px;
+    }
     }
 
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
+       main {
+      padding-top: 40px;
+    }
     }
 
     @media (max-width: 900px) {
       .nav-right { display: none; }
       .burger { display: flex; }
       .logo img { height: 14px; }
+       main {
+      padding-top: 40px;
+    }
 
       .product-section {
         flex-direction: column;
@@ -315,8 +340,9 @@
 
 <main>
   <section class="product-section">
-    <img src="images/pn1.JPG" alt="Schmuckschale Klassisch #TC2230" class="product-image">
-    <div class="product-content">
+  <a href="index.html" class="back-button">Zurück</a>
+  <img src="images/pn1.JPG" alt="Schmuckschale Klassisch #TC2230" class="product-image">
+  <div class="product-content">
       <h1>Schmuckschale Klassisch #TC2230</h1>
       <p>
         Diese organisch geformte Keramikschale ist ein kleines Kunstwerk für jeden Tisch. 
