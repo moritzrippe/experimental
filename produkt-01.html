@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoma & Co.</title>
+  <link rel="icon" type="image/png" href="fav.png">
+  <meta name="theme-color" content="#194026">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <style>
+    @font-face {
+      font-family: 'head';
+      src: url('fonts/head.otf') format('opentype');
+    }
+
+    :root {
+      --green: #194026;
+      --accent: #f1f1d7;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--accent);
+      font-family: 'head', serif;
+      color: var(--green);
+      min-height: 100vh;
+    }
+
+    img {
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+      display: block; /* verhindert Baseline-Verschiebung */
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background-color: var(--green);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* saubere vertikale Zentrierung */
+      position: relative;
+      line-height: 1;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo img {
+      height: 15px;
+      display: block;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 32px;
+      height: 100%;
+    }
+
+    nav a {
+      margin-left: 32px;
+      text-decoration: none;
+      font-size: 17px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    .social-icon img {
+      width: 17px;
+    }
+
+    /* ================= BURGER ================= */
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      position: absolute;
+      right: 32px;
+      background: none;
+      border: none;
+    }
+
+    .burger span {
+      width: 22px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    /* ================= SIDE MENU ================= */
+
+    .side-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: var(--green);
+      z-index: 1050;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .side-menu.open {
+      display: flex;
+    }
+
+    .side-menu a {
+      text-decoration: none;
+      font-size: 17px;
+      color: var(--accent);
+    }
+
+    .side-menu-close {
+      position: fixed;
+      top: 20px;
+      right: 32px;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .side-menu-close span {
+      width: 22px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    /* ================= PRODUCT PAGE ================= */
+
+    main {
+      padding-top: 140px;
+    }
+
+    .product-section {
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding: 0 32px;
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .product-image {
+      width: 400px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background-color: #eaeace;
+    }
+
+    .product-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .product-content h1 {
+      font-size: 28px;
+    }
+
+    .product-content p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .product-button {
+      margin-top: 10px;
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: var(--green);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      width: fit-content;
+      transition: opacity 0.2s ease;
+    }
+
+    .product-button:hover {
+      opacity: 0.8;
+    }
+
+    /* ================= RESPONSIVE ================= */
+@media (max-width: 335px) {
+      .logo img { height: 12px; }
+      nav a { margin-left: 10px; font-size: 15px; }
+}
+  
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+
+      .nav-right { display: none; }
+      .burger { display: flex; }
+      .logo img { height: 14px; }
+
+      .product-section {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .product-image {
+        width: 100%;
+      }
+
+      .product-content {
+        width: 100%;
+      }
+
+      .product-content h1 {
+        font-size: 22px;
+      }
+
+      .product-content p {
+        font-size: 15px;
+      }
+    }
+
+    footer {
+      margin-top: 120px;
+      padding: 80px 24px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo.png" alt="Logo" draggable="false">
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <a href="index.html" class="active">Kollektion</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="https://www.instagram.com/thomaundco/" target="_blank" class="social-icon">
+        <img src="social.png" alt="Instagram" draggable="false">
+      </a>
+    </div>
+
+    <button class="burger" id="burgerBtn" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="side-menu-close" id="menuClose" aria-label="Menü schließen">
+    <span></span>
+    <span></span>
+  </button>
+  <a href="index.html">Kollektion</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="https://www.instagram.com/thomaundco/" target="_blank">Instagram</a>
+</div>
+
+<main>
+  <section class="product-section">
+    <img src="images/pn1.jpg" alt="Schmuckschale Klassisch #TC2230" class="product-image">
+    <div class="product-content">
+      <h1>Schmuckschale Klassisch #TC2230</h1>
+      <p>
+        Diese organisch geformte Keramikschale ist ein kleines Kunstwerk für jeden Tisch. 
+        Mit ihrer sanft gewellten Randform und der cremig-weißen Glasur mit warmen Sandtönen 
+        wirkt sie gleichzeitig natürlich und elegant. Die flache Mulde bietet den perfekten 
+        Platz für Ringe, Armbänder und anderen Schmuck – oder einfach als dekoratives Objekt 
+        für das Regal oder den Nachttisch.<br><br>
+        Jedes Stück ist ein Unikat und trägt die charakteristischen Spuren der Handarbeit, 
+        die es unverwechselbar machen.
+      </p>
+      <a href="mailto:info@mouleina.com?subject=Schmuckschale%20Klassisch%20%23TC2230" class="product-button">
+        Anfragen
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Copyright © 2026 Mouleina. Alle Rechte vorbehalten.
+</footer>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const menuClose = document.getElementById('menuClose');
+  const sideMenu = document.getElementById('sideMenu');
+
+  burgerBtn.addEventListener('click', function () {
+    sideMenu.classList.add('open');
+  });
+
+  menuClose.addEventListener('click', function () {
+    sideMenu.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
