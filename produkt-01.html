@@ -58,7 +58,7 @@
       padding: 0 32px;
       display: flex;
       justify-content: center;
-      align-items: center; /* saubere vertikale Zentrierung */
+      align-items: center;
       position: relative;
       line-height: 1;
     }
@@ -82,41 +82,39 @@
       align-items: center;
       position: absolute;
       right: 32px;
-      height: 100%;
     }
 
-    nav a {
+   nav a {
       margin-left: 32px;
       text-decoration: none;
       font-size: 17px;
       color: var(--accent);
-      display: flex;
-      align-items: center;
     }
 
-    .social-icon {
-      display: flex;
-      align-items: center;
-    }
-
-    .social-icon img {
+     .social-icon img {
       width: 17px;
+      height: auto;
+      display: block;
     }
 
     /* ================= BURGER ================= */
 
-    .burger {
+   .burger {
       display: none;
       flex-direction: column;
+      justify-content: center;
       gap: 6px;
       cursor: pointer;
       position: absolute;
       right: 32px;
+      z-index: 1100;
       background: none;
       border: none;
+      padding: 0;
     }
 
     .burger span {
+      display: block;
       width: 22px;
       height: 2px;
       background-color: var(--accent);
@@ -124,10 +122,13 @@
 
     /* ================= SIDE MENU ================= */
 
-    .side-menu {
+  .side-menu {
       display: none;
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-color: var(--green);
       z-index: 1050;
       flex-direction: column;
@@ -144,21 +145,31 @@
       text-decoration: none;
       font-size: 17px;
       color: var(--accent);
+      font-family: 'head', serif;
+    }
+
+    .side-menu a:hover {
+      opacity: 0.7;
     }
 
     .side-menu-close {
-      position: fixed;
-      top: 20px;
-      right: 32px;
-      background: none;
-      border: none;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 6px;
       cursor: pointer;
+      position: fixed;
+      top: 2.5px;
+      right: 32px;
+      z-index: 1060;
+      background: none;
+      border: none;
+      padding: 0;
+      height: 35px;
     }
 
     .side-menu-close span {
+      display: block;
       width: 22px;
       height: 2px;
       background-color: var(--accent);
@@ -194,7 +205,7 @@
     }
 
     .product-content h1 {
-      font-size: 28px;
+      font-size: 22px;
     }
 
     .product-content p {
@@ -248,7 +259,7 @@
       }
 
       .product-content h1 {
-        font-size: 22px;
+        font-size: 18px;
       }
 
       .product-content p {
@@ -279,7 +290,7 @@
     <div class="nav-right">
       <a href="index.html" class="active">Kollektion</a>
       <a href="galerie.html">Galerie</a>
-      <a href="https://www.instagram.com/thomaundco/" target="_blank" class="social-icon">
+      <a href="https://www.instagram.com/thomaundco/" target="_blank" class="social-icon img">
         <img src="social.png" alt="Instagram" draggable="false">
       </a>
     </div>
@@ -303,7 +314,7 @@
 
 <main>
   <section class="product-section">
-    <img src="images/pn1.jpg" alt="Schmuckschale Klassisch #TC2230" class="product-image">
+    <img src="images/pn1.JPG" alt="Schmuckschale Klassisch #TC2230" class="product-image">
     <div class="product-content">
       <h1>Schmuckschale Klassisch #TC2230</h1>
       <p>
