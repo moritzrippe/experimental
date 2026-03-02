@@ -14,6 +14,11 @@
       src: url('fonts/head.otf') format('opentype');
     }
 
+    @font-face {
+  font-family: 'copy';
+  src: url('fonts/copy.otf') format('opentype');
+}
+
     :root {
       --green: #194026;
       --accent: #f1f1d7;
@@ -213,9 +218,10 @@
     }
 
     .product-content p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
+  font-family: 'copy', serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
     .product-button {
       margin-top: 10px;
