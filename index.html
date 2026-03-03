@@ -12,8 +12,6 @@
     @font-face {
       font-family: 'head';
       src: url('fonts/head.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     :root {
@@ -28,13 +26,9 @@
       padding: 0;
     }
 
-    html {
-      background-color: #194026;
-    }
-
-    body {
+    html, body {
+      background-color: var(--accent);
       font-family: 'head', serif;
-      background-color: #f1f1d7;
       color: var(--green);
       min-height: 100vh;
     }
@@ -57,7 +51,7 @@
       z-index: 1000;
     }
 
-    nav {
+ nav {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 32px;
@@ -65,12 +59,16 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      line-height: 1;
     }
 
     .logo {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
 
     .logo img {
