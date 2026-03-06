@@ -62,19 +62,24 @@
       line-height: 1;
     }
 
-    .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      height: 100%;
-    }
+  .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 0 !important;
+  text-decoration: none;
+  pointer-events: auto; 
+  z-index: 1010;
+}
 
-    .logo img {
-      height: 15px;
-      display: block;
-    }
+  .logo img {
+  height: 15px;
+  display: block;
+  pointer-events: auto;
+}
 
     .nav-right {
       display: flex;
@@ -249,9 +254,9 @@
 
 <header>
   <nav>
-    <div class="logo">
-      <img src="logo.png" alt="Logo" draggable="false">
-    </div>
+      <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo" draggable="false">
+  </a>
 
     <div class="nav-right">
       <a href="index.html" class="active">Kollektion</a>
