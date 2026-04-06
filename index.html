@@ -295,53 +295,65 @@
   line-height: 1.6;
 }
 
-    @media (max-width: 335px) {
-      .logo img { height: 12px; }
-      nav a { margin-left: 10px; font-size: 15px; }
-      .carousel { height: auto;}
-      body {padding-top: 40px;}
-      .collection-heading {
-     font-size: 15px;
-     margin: 24px auto 0 auto;
-     padding: 0 20px;
-}
-    }
-
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: 1fr; }
-      .carousel { height: auto;}
-      body {padding-top: 40px;}
-     .collection-heading {
+  @media (max-width: 900px) {
+  .nav-right { display: none; }
+  .burger { display: flex; }
+  .logo img { height: 14px; }
+  nav a { margin-left: 17px; font-size: 15px; }
+  .carousel { height: auto; }
+  body { padding-top: 40px; }
+  .collection-heading {
     font-size: 18px;
     margin: 24px auto 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+  .about-heading {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .about-text {
+    max-width: 700px;
+    font-family: 'copy';
+    line-height: 1.6;
+    font-size: 16px;
+  }
 }
-    }
 
-    @media (max-width: 900px) {
-      .nav-right { display: none; }
-      .burger { display: flex; }
-      .logo img { height: 14px; }
-      nav a { margin-left: 17px; font-size: 15px; }
-      .carousel { height: auto;}
-      body {padding-top: 40px;}
-      .collection-heading {
+@media (max-width: 768px) {
+  body { 
+    padding-top: 40px;
+    overflow-x: hidden;
+  }
+  .carousel { height: auto; }
+  .collection-heading {
     font-size: 18px;
     margin: 24px auto 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+  main {
+    padding: 24px 16px 64px 16px;
+  }
+  .grid { 
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+  .product-card {
+    padding: 12px;
+  }
 }
-    .about-heading {
-      font-size: 18px;
-      margin-bottom: 14px;
-    }
 
-    .about-text {
-      max-width: 700px;
-      font-family: 'copy';
-      line-height: 1.6;
-      font-size: 16px;
-    }
-    }
+@media (max-width: 335px) {
+  .logo img { height: 12px; }
+  nav a { margin-left: 10px; font-size: 15px; }
+  .carousel { height: auto; }
+  body { padding-top: 40px; }
+  .collection-heading {
+    font-size: 15px;
+    margin: 24px auto 0 auto;
+    padding: 0 20px;
+  }
+}
     
   </style>
 </head>
@@ -405,12 +417,12 @@
 
     <a href="produkt-03.html" class="product-card">
       <img src="images/hundenapf.jpg" alt="Produkt 03" draggable="false">
-      <div class="title">Hundenapf Viereckig</div>
+      <div class="title">Hundenapf</div>
     </a>
 
     <a href="produkt-04.html" class="product-card">
       <img src="images/windlicht.jpg" alt="Produkt 04" draggable="false">
-      <div class="title">Windlicht Original</div>
+      <div class="title">Windlicht</div>
     </a>
 
     <a href="produkt-05.html" class="product-card">
@@ -420,7 +432,7 @@
 
     <a href="produkt-06.html" class="product-card">
       <img src="images/tablett.jpg" alt="Produkt 06" draggable="false">
-      <div class="title">Tablett, 1 von 1</div>
+      <div class="title">Tablett</div>
     </a>
 
     <a href="produkt-07.html" class="product-card">
@@ -440,7 +452,7 @@
 
     <a href="produkt-10.html" class="product-card">
       <img src="images/aschenbecher.jpg" alt="Produkt 10" draggable="false">
-      <div class="title">Aschenbecher, 1 von 1</div>
+      <div class="title">Aschenbecher</div>
     </a>
 
     <a href="produkt-11.html" class="product-card">
